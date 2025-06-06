@@ -7,7 +7,7 @@ int main()
 {
     std::ifstream in;
     std::string a;
-    in.open("./C/Grace.c");
+    in.open("./C/Sully.c");
     if (in.is_open())
     {
         while (std::getline(in,a))
@@ -17,10 +17,13 @@ int main()
                 switch (a[i])
                 {
                 case '\t':
-                    a.replace(i,1,"%2$c");
+                    a.replace(i,1,"%2$c"); i += 3;
                     break;
                 case '"':
-                    a.replace(i,1,"%4$c");
+                    a.replace(i,1,"%4$c"); i += 3;
+                    break;
+                case '%':
+                    a.replace(i,1,"%%"); i += 2;
                     break;
                 default:
                     break;
