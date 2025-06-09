@@ -21,10 +21,10 @@ Grace:	$(OBJG) Makefile
 Sully:	$(OBJS) Makefile
 		$(CC) $(CFLAGS) $(OBJS) -o Sully
 
-clean: Makefile
+clean:
 		$(RM) *.o
 
-fclean: Makefile clean
+fclean: clean
 		$(RM) Colleen Grace Sully Sully_* Grace_kid.c
 
 re:	fclean all
