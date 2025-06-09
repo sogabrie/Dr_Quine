@@ -6,9 +6,9 @@ SRCC = Colleen.c
 SRCG = Grace.c
 SRCS = Sully.c
 
-OBJC	= $(SRCC: .c=.o)
-OBJG	= $(SRCG: .c=.o)
-OBJS	= $(SRCS: .c=.o)
+OBJC	= $(SRCC:.c=.o)
+OBJG	= $(SRCG:.c=.o)
+OBJS	= $(SRCS:.c=.o)
 
 all:	Colleen Grace Sully
 
@@ -22,7 +22,7 @@ Sully:	$(OBJS) Makefile
 		$(CC) $(CFLAGS) $(OBJS) -o Sully
 
 clean:
-		$(RM) *.o
+		$(RM) $(OBJC) $(OBJG) $(OBJS)
 
 fclean: clean
 		$(RM) Colleen Grace Sully Sully_* Grace_kid.c
