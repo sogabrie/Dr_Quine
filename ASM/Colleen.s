@@ -20,5 +20,6 @@ main:
 	lea rdi, [rel s]
 	;This program will print its own source when run 2.
 	call Colleen
-	xor rax, rax
-	ret
+	mov rax, 60
+	xor rdi, rdi
+	syscall
