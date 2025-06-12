@@ -13,3 +13,7 @@ c:
 d:
 	nasm -f elf64  aa.s -o aa.o
 	gcc -z execstack -no-pie -Wall -Wextra -Werror aa.o -o a.out
+
+s:
+	nasm -f elf64  Sully.s -o Sully.o
+	gcc -z execstack -no-pie -Wall -Wextra -Werror Sully.o -o a.out
