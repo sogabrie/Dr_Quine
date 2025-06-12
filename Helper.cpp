@@ -7,7 +7,7 @@ int main()
 {
     std::ifstream in;
     std::string a;
-    in.open("./ASM/Colleen.s");
+    in.open("./ASM/Sully.s");
     if (in.is_open())
     {
         while (std::getline(in,a))
