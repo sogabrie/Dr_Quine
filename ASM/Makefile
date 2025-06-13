@@ -10,10 +10,12 @@ c:
 	nasm -f elf64 -g -F dwarf Grace.s -o Grace.o
 	gcc -z execstack -no-pie -Wall -Wextra -Werror Grace.o -o a.out
 
-d:
-	nasm -f elf64  aa.s -o aa.o
-	gcc -z execstack -no-pie -Wall -Wextra -Werror aa.o -o a.out
-
 s:
 	nasm -f elf64  Sully.s -o Sully.o
 	gcc -z execstack -no-pie -Wall -Wextra -Werror Sully.o -o a.out
+
+ss:
+	nasm -f elf64 -g -F dwarf Sully.s -o Sully.o
+	gcc -z execstack -no-pie -Wall -Wextra -Werror Sully.o -o a.out
+
+#x/s &fileN , p/d $r13,  p/x $r13 , x/s $rdx
