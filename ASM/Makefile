@@ -15,7 +15,7 @@ s:
 	gcc -z execstack -no-pie -Wall -Wextra -Werror Sully.o -o Sully
 
 ss:
-	nasm -f elf64 -g -F dwarf Sully_5.s -o Sully_5.o
-	gcc -z execstack -no-pie -Wall -Wextra -Werror Sully_5.o -o a.out
+	nasm -f elf64 -g -F dwarf Sully.s -o Sully.o
+	gcc -z execstack -no-pie -Wall -Wextra -Werror Sully.o -o Sully
 
 #x/s &fileN , p/d $r13,  p/x $r13 , x/s $rdx , gdb ./a.out 
