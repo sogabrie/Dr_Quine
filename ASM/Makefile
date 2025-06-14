@@ -19,6 +19,6 @@ ss:
 	gcc -z execstack -no-pie -Wall -Wextra -Werror Sully.o -o Sully
 
 clean:
-	rm -rf *.o *_*.s 
+	rm -rf *.o *_*
 
 #x/s &fileN , p/d $r13,  p/x $r13 , x/s $rdx , gdb ./a.out 
