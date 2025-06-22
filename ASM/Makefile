@@ -1,10 +1,12 @@
 CC		= gcc
+ACC 	= nasm
 RM		= rm -rf
 CFLAGS	= -z execstack -no-pie -Wall -Werror -Wextra
+AFLAGS	= -DFIRST -f elf64
 
-SRCC = Colleen.c
-SRCG = Grace.c
-SRCS = Sully.c
+SRCC = Colleen.s
+SRCG = Grace.s
+SRCS = Sully.s
 
 OBJC	= $(SRCC:%.s=%.o)
 OBJG	= $(SRCG:%.s=%.o)
@@ -23,7 +25,7 @@ Sully:	$(OBJS) Makefile
 		$(CC) $(CFLAGS) $(OBJS) -o Sully
 
 %.o: %.s
-	nasm -DFIRST -f elf64 $< -o $@
+	$(ACC) $(AFLAGS) $< -o $@
 
 clean:
 		$(RM) $(OBJC) $(OBJG) $(OBJS)
