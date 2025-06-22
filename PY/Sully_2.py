@@ -11,7 +11,7 @@ if __name__ == '__main__':
             fi.write(s.format(q = chr(34), s = s, i = i))
         os.system('python3 ' + fn)"""
 if __name__ == '__main__':
-    i = 5
+    i = 2
     if 'Sully.py' != os.path.basename(__file__):
         i -= 1
     if i >= 0:

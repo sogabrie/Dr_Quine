@@ -1,24 +1,36 @@
-a:
-	nasm -f elf64  Colleen.s -o Colleen.o
-	gcc -z execstack -no-pie -Wall -Wextra -Werror Colleen.o -o a.out
+CC		= gcc
+RM		= rm -rf
+CFLAGS	= -z execstack -no-pie -Wall -Werror -Wextra
 
-b:
-	nasm -f elf64  Grace.s -o Grace.o
-	gcc -z execstack -no-pie -Wall -Wextra -Werror Grace.o -o a.out
+SRCC = Colleen.c
+SRCG = Grace.c
+SRCS = Sully.c
 
-c:
-	nasm -f elf64 -g -F dwarf Grace.s -o Grace.o
-	gcc -z execstack -no-pie -Wall -Wextra -Werror Grace.o -o a.out
+OBJC	= $(SRCC:%.s=%.o)
+OBJG	= $(SRCG:%.s=%.o)
+OBJS	= $(SRCS:%.s=%.o)
 
-s:
-	nasm -DFIRST -f elf64  Sully.s -o Sully.o
-	gcc -z execstack -no-pie -Wall -Wextra -Werror Sully.o -o Sully
 
-ss:
-	nasm -f elf64 -g -F dwarf Sully.s -o Sully.o
-	gcc -z execstack -no-pie -Wall -Wextra -Werror Sully.o -o Sully
+all:	Colleen Grace Sully
+
+Colleen:	$(OBJC) Makefile
+		$(CC) $(CFLAGS) $(OBJC) -o Colleen
+
+Grace:	$(OBJG) Makefile
+		$(CC) $(CFLAGS) $(OBJG) -o Grace
+
+Sully:	$(OBJS) Makefile
+		$(CC) $(CFLAGS) $(OBJS) -o Sully
+
+%.o: %.s
+	nasm -DFIRST -f elf64 $< -o $@
 
 clean:
-	rm -rf *.o *_*
+		$(RM) $(OBJC) $(OBJG) $(OBJS)
 
-#x/s &fileN , p/d $r13,  p/x $r13 , x/s $rdx , gdb ./a.out 
+fclean: clean
+		$(RM) Colleen Grace Sully Sully_* Grace_kid.s
+
+re:	fclean all
+
+.PHONY: all clean fclean re
