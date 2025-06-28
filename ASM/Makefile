@@ -13,19 +13,19 @@ OBJG	= $(SRCG:%.s=%.o)
 OBJS	= $(SRCS:%.s=%.o)
 
 
-# all:	Colleen Grace Sully
+all:	Colleen Grace Sully
 
-# Colleen:	$(OBJC) Makefile
-# 		$(CC) $(CFLAGS) $(OBJC) -o Colleen
+Colleen:	$(OBJC) Makefile
+		$(CC) $(CFLAGS) $(OBJC) -o Colleen
 
-# Grace:	$(OBJG) Makefile
-# 		$(CC) $(CFLAGS) $(OBJG) -o Grace
+Grace:	$(OBJG) Makefile
+		$(CC) $(CFLAGS) $(OBJG) -o Grace
 
-# Sully:	$(OBJS) Makefile
-# 		$(CC) $(CFLAGS) $(OBJS) -o Sully
+Sully:	$(OBJS) Makefile
+		$(CC) $(CFLAGS) $(OBJS) -o Sully
 
-# %.o: %.s
-# 	$(ACC) $(AFLAGS) $< -o $@
+%.o: %.s
+	$(ACC) $(AFLAGS) $< -o $@
 
 clean:
 		$(RM) $(OBJC) $(OBJG) $(OBJS)
@@ -33,12 +33,6 @@ clean:
 fclean: clean
 		$(RM) Colleen Grace Sully Sully_* Grace_kid.s
 
-# re:	fclean all
+re:	fclean all
 
-# .PHONY: all clean fclean re
-
-c:
-	nasm -f elf64 -g -F dwarf Grace.s -o Grace.o
-	gcc -z execstack -no-pie -Wall -Wextra -Werror Grace.o -o a.out
-
-#x/s &fileN , p/d $r13,  p/x $r13 , x/s $rdx , gdb ./a.out 
+.PHONY: all clean fclean re

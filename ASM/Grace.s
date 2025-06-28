@@ -1,7 +1,7 @@
 BITS 64
 
 %define FF "Grace_kid.s"
-%define STRN "%%define FILE %4$cGrace_kid.s%4$c%3$c%%define STRN %4$c%1$s%4$c%3$c;This program will print its own source when run.%3$c%3$csection .rodata%3$c    file: db FILE, 0%3$c    newfile: db STRN, 0%3$c    flag: db %4$cw%4$c, 0%3$c%3$csection .text%3$c    global main%3$c    extern fopen, fclose, fprintf, exit%3$c%3$c%%macro MAIN 0%3$cmain:%3$c    mov rdi, file%3$c    mov rsi, flag%3$c    call fopen%3$c    test rax, rax%3$c    mov r12, rax%3$c    mov rdi, r12%3$c    lea rsi, [rel newfile]%3$c    lea rdx, [rel newfile]%3$c    mov rcx, 9%3$c    mov r8, 10%3$c    mov r9, 34%3$c    xor rax, rax%3$c    call fprintf%3$c    mov rdi, r12%3$c    call fclose%3$c    xor rdi, rdi%3$c    call exit%3$c%%endmacro%3$cMAIN"
+%define STRN ""
 ;This program will print its own source when run.
 
 section .rodata
